@@ -28,4 +28,25 @@
  */
 export function chaiTapriRevenue(customers) {
   // Your code here
+   // Validation: must be a positive integer
+  if (!Number.isInteger(customers) || customers <= 0) {
+    return { totalChai: 0, totalRevenue: 0 };
+  }
+
+  // Every 3rd customer gets adrak chai
+  const adrakChai = Math.floor(customers / 3);
+
+  // Remaining customers get cutting chai
+  const cuttingChai = customers - adrakChai;
+
+  // Prices
+  const cuttingPrice = 10;
+  const adrakPrice = 15;
+
+  const totalRevenue = (cuttingChai * cuttingPrice) + (adrakChai * adrakPrice);
+
+  return {
+    totalChai: customers,
+    totalRevenue: totalRevenue
+  };
 }
